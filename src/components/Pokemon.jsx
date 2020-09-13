@@ -5,17 +5,10 @@ const Pokemon = props => {
     const [pokemon, setPokemon] = useState([]);
 
     const getPokemon = () => {
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=100")
-            .then(res => {
-                return res.json()
-            })
-            .then(res => setPokemon(res.results))
-            .catch(err => console.log(err));
+        Axios.get("https://pokeapi.co/api/v2/pokemon")
+            .then(res => setPokemon(res.data.results))
+            .catch(err => console.log(err))
     }
-
-    // Axios.get("https://pokeapi.co/api/v2/pokemon")
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(res))
     
     return(
         <div>
